@@ -51,6 +51,7 @@ public:
         cout << "-> Tomar otra carta?[1-Si|2-No]: ";
         int resp;
         cin >> resp;
+        int p_user = 0;
         if (resp == 1)
         {
             carta4 = rand() % 11 + 1;
@@ -65,8 +66,18 @@ public:
                      << "]" << endl;
                 cout << "-> Tomar otra carta?[1-Si|2-No]: ";
                 cin >> resp;
+                p_user = carta1 + carta2 + carta3 + carta4 + carta5;
+            }
+            else
+            {
+                p_user = carta1 + carta2 + carta3 + carta4;
             }
         }
+        else
+        {
+            p_user = carta1 + carta2 + carta3;
+        }
+        cout << usuario.getNombre() << " | Puntuacion: " << p_user << endl;
         int punt_bot, cont = 0;
         bool flag;
         Jugador b;
@@ -102,7 +113,7 @@ public:
                     flag = false;
                 }
             }
-            cout << b.getNombre() << " | Puntuacion: " << b.getPuntuacion() << endl;
+            cout << "bot-" << cont + 1 << " | Puntuacion: " << punt_bot << endl;
             cont++;
         }
     }
@@ -118,5 +129,6 @@ int main()
     cin >> nombre;
     Juego j;
     j.Jugar(n_jugadores, nombre);
+
     return 0;
 }
